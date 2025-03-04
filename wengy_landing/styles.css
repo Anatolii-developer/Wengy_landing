@@ -1,0 +1,1128 @@
+@font-face {
+    font-family: "NF-Le petit cochon";
+    src: url("fonts/Petit\ Cochon.otf") format("truetype"),
+         url("fonts/Petit\ Cochon.ttf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Beth Ellen";
+    src: url('/fonts/BethEllen-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Montserrat";
+    src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+/* General Styles */
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    color: rgb(251, 245, 243);
+    background-color: #000000;
+    box-sizing: border-box;
+  }
+  
+  /* Navbar Styles */
+  .header {
+    background: #051329;
+    width: 100%; /* Makes navbar full width */
+    max-width: 1380px; /* Limits width for large screens */
+    height: 96px; /* Fixed height */
+    position: absolute; /* Position relative to the viewport */
+    top: 37px; /* Offset from the top */
+    left: 40px; /* Offset from the left */
+    padding: 16px 16px 16px 32px; /* Padding values */
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Distribute items with space in between */
+    gap: 201px; /* Spacing between logo, navigation, and button */
+    border-radius: 30px; /* Rounded top-left corner */
+    opacity: 1; /* Set opacity to visible (use 0 for invisible) */
+    z-index: 1000; /* Ensure it stays above other elements */
+  }
+  
+  /* Center container */
+  .header__container {
+    max-width: 1200px; /* Optional, limits content width */
+    width: 100%;
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-between; /* Space between logo and navigation */
+    padding: 0 20px;
+  }
+
+  .header__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Logo Styles */
+  .header__logo {
+    display: flex;
+    align-items: center; /* Ensure logo items are centered vertically */
+  }
+  
+  .header__logo img {
+    width: 100px;
+    height: 100px;
+    gap: 0px;
+    opacity: 0px;
+    
+  }
+  
+  /* Navigation Styles */
+  .header__nav {
+    display: flex;
+    align-items: center; /* Ensure nav items are centered vertically */
+  }
+
+  .header__nav-item {
+    margin-left: 20px; /* Space between nav items */
+  }
+
+  .header__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .header__list li {
+    margin-left: 20px; /* Space between nav items */
+  }
+
+  .header__list button {
+    background: none;
+    border: none;
+    color: rgb(251, 245, 243);
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+    line-height: 20px;
+  }
+  
+  .hover-underline:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #A0BCFF;
+    left: 0;
+    bottom: -2px;
+  }
+  
+
+
+
+  .menu-toggle {
+    display: n;
+    width: 21px;
+    height: 9.75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px; /* Border width */
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* 🟢 MOBILE MENU (Initially Hidden) */
+  .mobile-menu {
+    width: 358px;
+    height: 400px;
+    position: absolute;
+    top: 47px;
+    left: 16px;
+    border-radius: 50px;
+    background: #051329;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .mobile-menu ul li {
+    padding: 15px 0;
+  }
+  
+  .mobile-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* 🟢 SHOW MENU WHEN ACTIVE */
+  .mobile-menu.active {
+    display: flex;
+  }
+
+  /* Dropdown */
+/* Dropdown container */
+/* Dropdown container */
+.dropdown {
+    position: relative;
+  }
+  
+  /* Dropdown button */
+  .dropdown__title {
+    background: none;
+    border: none;
+    color: rgb(251, 245, 243);
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    transition: color 0.25s ease; /* Smooth color transition */
+  }
+  
+  .dropdown__title:hover {
+    color: #A0BCFF; /* Highlight on hover */
+  }
+  
+  /* Arrow image styling */
+  .arrow {
+    width: 16px; /* Set the width of the arrow */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.30s ease; /* Smooth arrow rotation */
+  }
+  
+  /* Rotate arrow when dropdown is active */
+  .dropdown:hover .arrow {
+    transform: rotate(180deg);
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown__content {
+    position: absolute;
+    top: 100%; /* Below the dropdown button */
+    left: 0;
+    background: #051329;
+    color: rgb(251, 245, 243);
+    width: 430px; /* Fixed width */
+    padding: 20px;
+    border-radius: 20px; /* Rounded bottom corners */
+    display: none;
+    flex-direction: column;
+    gap: 25px;
+    box-sizing: border-box;
+    list-style: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* Show dropdown content on hover */
+  .dropdown:hover .dropdown__content {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Dropdown list items */
+  .dropdown__content button {
+    background: none;
+    border: none;
+    color: rgb(251, 245, 243);
+    font-size: 18px;
+    text-align: left;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .dropdown__content button:hover {
+    color: #A0BCFF; /* Highlight on hover */
+  }
+  
+  
+/* Collaborate Button */
+.header__actions .header__button {
+    background: #1E48C1;
+    color: rgb(251, 245, 243);
+    width: 148px; 
+    height: 55px; 
+    padding: 12px 6px; 
+    border-radius: 100px; /* Rounded top-left corner */
+    border: none; /* No border */
+    cursor: pointer;
+    font-size: 16px; /* Adjust font size for better fit */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between content inside the button */
+    opacity: 1; /* Set visibility (use 0 for invisible) */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover Effect for the Button */
+  .header__actions .header__button:hover {
+    background-color: #A0BCFF; /* Change background color on hover */
+    color: #051329; /* Text color change on hover */
+  }
+  
+
+  /* Pop-up Styling */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup__content {
+  background: #fff;
+  border-radius: 60px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+}
+
+.popup__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+.contact-form button:hover {
+  background: #0056b3;
+}
+
+
+
+ /* Hero Section */
+.hero {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+/* Logo Section */
+.hero__logo-section {
+  width: 1440px; /* Fixed width for the logo container */
+  height: 461px; /* Fixed height for the logo container */
+  display: flex;
+  justify-content: center; /* Center the logo horizontally */
+  align-items: center; /* Center the logo vertically */
+  margin: 0 auto; /* Center within the page */
+  position: relative;
+  top: 130px; /* Adjust this value to push the image lower */
+}
+
+.hero__logo img {
+  width: 800px; /* Adjust the size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+}
+
+/* Hero Container */
+.hero__container {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 30px; /* Add some padding to the content */
+  box-sizing: border-box;
+}
+
+/* Left Content */
+.hero__left {
+  max-width: 50%;
+}
+.hero__title {
+  display: flex;
+  flex-direction: column; /* Stack the elements vertically */
+  align-items: flex-start; /* Align text to the left */
+  gap: 20px; /* Space between title, subtitle, and brand */
+}
+
+.hero__title h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #000000;
+  margin: 0;
+}
+
+.hero__title .right {
+  font-weight: 700;
+  color: #000000;
+}
+
+.hero__subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #051329;
+  margin: 0;
+}
+
+.hero__brand {
+  font-family: "NF-Le petit cochon", sans-serif;
+  font-size: 120px;
+  font-weight: 700;
+  color: #1E48C1;
+  margin-top: 30px;
+  margin-left: 0; /* Align to the left */
+}
+
+
+/* Right Content */
+.hero__right {
+  width: 365px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Adds spacing between items */
+}
+
+.hero__tags {
+  font-family: "Beth Ellen", cursive;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 33.6px;
+  color: #A0BCFF;
+  transform: rotate(-9deg);
+}
+
+.hero__tags .tag {
+  display: block;
+  margin-bottom: 20px; /* Fallback spacing */
+}
+
+.hero__tags .tag:last-child {
+  margin-bottom: 0; /* Remove spacing for the last tag */
+}
+
+
+.hero__tags .tag {
+  display: block;
+}
+
+
+/* About Section */
+.about {
+  padding: 40px 20px;
+  background-color: #1E48C1;
+  color: #fff;
+}
+
+.about__subtitle h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 43.88px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: 1046px; /* Set width as per your specification */
+  height: 146px; /* Set height as per your specification */
+  margin: 0 auto 40px; /* Add bottom margin for space between subtitle and slider */
+  opacity: 1; /* Ensure the subtitle is visible */
+}
+
+/* Swiper Container */
+.about__slider {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px 0;
+}
+
+.swiper-wrapper {
+  display: flex;
+  gap: 0; /* Reduce gap between slider items */
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0
+}
+
+/* Small Text Square (Info at Top/Bottom) */
+.about__info-small {
+  width: 345px;
+  height: 100px;
+  background: #A0BCFF;
+  border-radius: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 50.4px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0; /* Add spacing between elements */
+}
+
+/* Image Styling */
+.about__item-img img {
+  width: 345px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Swiper Navigation */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+}
+
+/* Default Swiper State */
+.swiper {
+  cursor: grab;
+}
+
+/* Active Dragging State */
+.swiper:active {
+  cursor: grabbing;
+}
+
+
+.services {
+  background-image: url('/images/background.png');
+  background-size: cover;
+  background-position: center;
+  padding: 50px 20px;
+  position: relative;
+}
+
+.services__container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.services__row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.services__title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: 'NF-Le petit cochon', sans-serif;
+  color: #1E48C1;
+  transform: rotate(-20deg);
+}
+
+.left {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.services__right {
+  margin-top: 80px; /* Push the list down to leave space for the title */
+  padding-left: 750px; /* Move items to the right */
+}
+
+.services__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #10356F;
+  font-size: 56px;
+  font-weight: 70px;
+}
+
+.services__item {
+  border-bottom: 1px solid #002147;
+  padding: 15px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.services__item-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #002147;
+  background: none;
+  border: none;
+}
+
+.services__item-title:focus {
+  outline: none;
+}
+
+
+.projects {
+  background: url('/images/background.png');
+  background-size: cover;
+  padding: 50px 20px;
+  color: #002147;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.projects__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects__titles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 40px; /* Adjust gap between all elements evenly */
+  width: 100%;
+}
+
+.project-title:first-child {
+  flex: 0 1 auto; /* Prevents it from stretching */
+  text-align: center;
+}
+
+.project-title:not(:first-child) {
+  flex: 0 1 auto; /* Ensures even spacing */
+}
+
+
+
+.project-title {
+  font-family: 'NF-Le petit cochon', sans-serif;
+  font-size: 64px  !important;
+  font-weight: 600;
+  color: #99a3b3;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.project-title.active {
+  color: #1E48C1;
+}
+
+.project-title .small {
+  display: block;
+  font-size: 12px;
+}
+
+.project-title .big {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.projects__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center; 
+  gap: 20px;
+}
+
+.project-content {
+  display: none;
+  max-width: 800px; 
+}
+
+.project-content.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the image and text */
+}
+
+.project-content h3 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.project-content p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.project-content img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+
+.reviews-section {
+  background-image: url('/images/background.png'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  position: relative;
+}
+
+.reviews-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transform: rotate(-20deg);
+  font-family: "NF-Le petit cochon", sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  color: #1E48C1;
+  z-index: 10;
+}
+
+.reviews-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  margin-top: 100px;
+  padding: 80px 0 20px 0; /* Adjust padding to leave space for the title */
+}
+
+.review-container {
+  flex: none;
+  width: 300px;
+  height: 416px;
+  padding: 25px;
+  border-radius: 20px;
+  background: #E8EFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-text {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  color: #051329;
+  line-height: 1.8; 
+}
+
+.review-author {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  color: #051329;
+}
+
+/* Optional: Hide scrollbar for slider */
+.reviews-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.reviews-slider {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  cursor: grab; 
+  padding: 20px 0;
+}
+
+.reviews-slider:active {
+  cursor: grabbing; /* Change to grabbing when dragging */
+}
+
+.review-container {
+  flex: none;
+  width: 300px;
+  height: 416px;
+  padding: 25px;
+  border-radius: 20px;
+  background: #E8EFFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-text,
+.review-author {
+  user-select: none; /* Disable text selection */
+  -webkit-user-select: none; /* Disable text selection on Safari */
+  -ms-user-select: none; /* Disable text selection on older IE */
+}
+
+.highlight {
+  font-family: "NF-Le petit cochon", sans-serif;
+  color: #1E48C1;
+  font-size: 20px;
+}
+
+
+
+/* Why Us Section */
+.why-us {
+    background-image: url('/images/background.png');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    position: relative;
+}
+
+.why-us__container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.why-us__row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.why-us__title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: 'NF-Le petit cochon', sans-serif;
+    color: #1E48C1;
+    transform: rotate(-20deg);
+    font-size: 67px;
+}
+
+.why-us__content {
+    margin-top: 80px; /* Space below the title */
+    display: flex;
+    align-items: flex-start; /* Align items to the left */
+    gap: 450px; /* Space between image and list */
+}
+
+.why-us__image {
+    max-width: 400px; /* Adjust the size of the image */
+    height: auto;
+    padding-left: 50px;
+    padding-top: 20px;
+}
+
+.why-us__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #10356F;
+    font-size: 18px; /* Adjust font size */
+    font-weight: 400; /* Normal font weight */
+}
+
+.why-us__item {
+    border-bottom: 1px solid #002147;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column; /* Stack title and text vertically */
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+}
+
+.why-us__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #002147; /* Line color */
+}
+
+.why-us__item-title {
+    font-family: 'NF-Le petit cochon', sans-serif;
+    font-size: 56px; /* Font size for item title */
+    font-weight: 400; /* Bold font */
+    color: #10356F; /* Item title color */
+    margin-bottom: 10px; /* Space below item title */
+}
+
+.why-us__item-text {
+    font-family: 'Montserrat', sans-serif; /* Font family for item text */
+    font-size: 24px; /* Font size for item text */
+    font-weight: 400; /* Normal font weight */
+    color: black; /* Item text color */
+}
+
+/* Promo Section */
+.promo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0; /* Adjust padding as needed */
+    background-image: url('images/background.png'); /* Set background image */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+}
+
+.promo-container {
+    width: 1396px;
+    height: 394px;
+    padding: 230px 338px;
+    gap: 10px;
+    border-radius: 50px;
+    background: #1E48C1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.promo__inner {
+    text-align: center;
+}
+
+.promo__title {
+    font-family: "Montserrat", sans-serif; /* Change font family */
+    font-size: 48px; /* Adjust font size */
+    font-weight: 700; /* Bold font */
+    color: #ffffff; /* White color for title */
+    margin-bottom: 10px; /* Space below the title */
+}
+
+.promo__title span {
+    font-family: "NF-Le petit cochon", sans-serif; /* Different font for WENGY */
+    font-size: 96px;
+    color: #ffffff;
+}
+
+.promo__subtitle {
+    font-family: "Montserrat", sans-serif; /* Default font family */
+    font-size: 24px; /* Adjust font size */
+    font-weight: 400; /* Normal font weight */
+    color: #FFFFFFB2; /* White color for subtitle */
+    margin-bottom: 20px; /* Space below the subtitle */
+}
+
+.promo__subtitle a {
+  color: #FFFFFFB2; /* Same color as other text */
+  text-decoration: none; /* Remove underline */
+}
+
+.promo__button {
+    width: 237px;
+    height: 73px;
+    padding: 24px 32px;
+    margin-top: 50px;
+    gap: 10px;
+    border-radius: 100px;
+    background: #A0BCFF;
+    font-family: "Montserrat", sans-serif; /* Default font family */
+    font-size: 24px; /* Adjust font size */
+    font-weight: 500; /* Semi-bold font */
+    color: #1E48C1; /* Button text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.promo__button:hover {
+    background-color: #8faaff; /* Button hover background color */
+}
+
+
+/* Footer Section */
+.footer {
+    background-color: #1E48C1; /* Background color for the footer */
+    color: #ffffff; /* Text color for the footer */
+    padding: 40px 20px; /* Padding for the footer */
+}
+
+.footer__container {
+    max-width: 1200px; /* Maximum width for the footer container */
+    margin: 0 auto; /* Center the footer container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.footer__nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.footer__logo img {
+    max-width: 150px; /* Adjust the size of the logo */
+    margin-right: 20px; /* Space to the right of the logo */
+}
+
+.footer__columns {
+    display: flex;
+    gap: 40px; /* Space between columns */
+}
+
+.footer__column {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer__column li {
+    margin-bottom: 10px; /* Space between list items */
+}
+
+.footer__column button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.footer__column button:hover {
+    color: #A0BCFF; /* Hover color for buttons */
+}
+
+.footer__info {
+    text-align: right;
+}
+
+.footer__info span {
+    display: block;
+    margin-bottom: 10px; /* Space between info items */
+}
+
+.footer__info a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer__info a:hover {
+    color: #A0BCFF; /* Hover color for links */
+}
+
+.footer__socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between social icons */
+    margin-top: 20px; /* Space above the social links */
+}
+
+.footer__socials ul {
+    display: flex;
+    gap: 10px; /* Space between social icons */
+    margin: 0;
+    margin-top: 50px;
+    list-style: none;
+}
+
+.footer__socials ul li {
+    margin-bottom: 10px; /* Space between social items */
+}
+
+.footer__socials a.button {
+    background-color: #ffffff;
+    color: #1E48C1;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.footer__socials a.button:hover {
+    background-color: #A0BCFF; /* Hover background color for buttons */
+    color: #ffffff; /* Hover text color for buttons */
+}
+
+.hide-tablet {
+    margin-top: 50px;
+    display: none;
+}
+
+.only-tablet {
+  
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .hide-tablet {
+        display: block;
+    }
+    .only-tablet {
+        display: none;
+    }
+}
